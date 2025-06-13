@@ -2,9 +2,7 @@
   "name": "max30100",
   "description": "MAX30100 pulse oximeter extension for micro:bit MakeCode",
   "dependencies": {},
-  "files": [
-    "main.ts"
-  ],
+  "files": ["main.ts"],
   "targetVersions": {
     "microbit": "0.14.6",
     "codal-microbit": "0.2.29"
