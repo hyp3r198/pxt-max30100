@@ -21,12 +21,13 @@ namespace max30100 {
     }
 
     //% block="update readings"
-    export function update(): void {
-        pins.i2cWriteNumber(MAX30100_ADDRESS, REG_FIFO_DATA, NumberFormat.UInt8BE);
-        let buf = pins.i2cReadBuffer(MAX30100_ADDRESS, 4);
-        irValue = (buf[0] << 8) | buf[1];
-        redValue = (buf[2] << 8) | buf[3];
+   export function update(): void {
+    let reg = readRegister8(REG_INTERRUPT_STATUS)
+    if (reg & 0x20) {
+        IR = readRegister16(REG_FIFO_DATA)
+        RED = readRegister16(REG_FIFO_DATA)
     }
+}
 
     //% block="get IR value"
     export function getIR(): number {
